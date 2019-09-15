@@ -1,16 +1,14 @@
 package com.example.lenovo.calculator.activity.base;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2018/1/21 13:54
+ * @author : chenshuaiyu
+ * @date : 2018/1/21 13:54
  */
 
 public abstract class FragmentContainerActivity extends AppCompatActivity {
@@ -33,21 +31,21 @@ public abstract class FragmentContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
-        android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
 
-        android.support.v4.app.Fragment recordFragment=fm.findFragmentById(getUpFragmentContainerId());
-        if(null==recordFragment) {
-            recordFragment=createUpFragment();
+        android.support.v4.app.Fragment recordFragment = fm.findFragmentById(getUpFragmentContainerId());
+        if (null == recordFragment) {
+            recordFragment = createUpFragment();
             fm.beginTransaction()
-                    .add(getUpFragmentContainerId(),recordFragment)
+                    .add(getUpFragmentContainerId(), recordFragment)
                     .commit();
         }
 
-        android.support.v4.app.Fragment menuFragment=fm.findFragmentById(getDownFragmentContainerId());
-        if(null==menuFragment) {
-            menuFragment=createDownFragment();
+        android.support.v4.app.Fragment menuFragment = fm.findFragmentById(getDownFragmentContainerId());
+        if (null == menuFragment) {
+            menuFragment = createDownFragment();
             fm.beginTransaction()
-                    .add(getDownFragmentContainerId(),menuFragment)
+                    .add(getDownFragmentContainerId(), menuFragment)
                     .commit();
         }
     }
@@ -55,6 +53,5 @@ public abstract class FragmentContainerActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
     }
 }

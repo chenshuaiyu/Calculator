@@ -1,153 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
-            android:background="@drawable/operator_background"
             android:id="@+id/button_sin"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textAllCaps="false"
-            android:text="sin"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
+            android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text="sin"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_cos"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textAllCaps="false"
-            android:text="cos"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
+            android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text="cos"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_tan"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="tan"
-            android:textSize="30sp"
+            android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
-            android:background="@drawable/operator_background"
             android:id="@+id/button_ln"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="ln"
             android:textAllCaps="false"
-            android:textSize="30sp"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
+
         <Button
-            android:background="@drawable/operator_background"
             android:id="@+id/button_pingfang"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="²"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
+            android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text="²"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_jiecheng"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="n!"
-            android:textSize="30sp"
+            android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
-            android:background="@drawable/operator_background"
             android:id="@+id/button_π"
             android:layout_width="0dp"
-            android:layout_height= "match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="π"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text="π"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_zhengfuhao"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="±"
-            android:textSize="30sp"
+            android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
+
         <Button
             android:id="@+id/button_ci"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="^"
-            android:textSize="30sp"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
-            android:background="@drawable/operator_background"
             android:id="@+id/button_left_bracket"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="("
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
+            android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text="("
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_right_bracket"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text=")"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:onClick="onClick"/>
-        <Button
+            android:layout_weight="1"
             android:background="@drawable/operator_background"
+            android:onClick="onClick"
+            android:text=")"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <Button
             android:id="@+id/button_genhao"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/operator_background"
+            android:onClick="onClick"
             android:text="√￣"
-            android:textSize="30sp"
             android:textColor="#ffffff"
-            android:onClick="onClick"/>
+            android:textSize="30sp" />
     </LinearLayout>
 </LinearLayout>

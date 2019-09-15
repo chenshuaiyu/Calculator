@@ -21,10 +21,13 @@ public class RecordMenuFragment extends Fragment {
 
     private HistoryRecordFragment historyRecordFragment;
 
-    public interface Callbacks{
+    public interface Callbacks {
         void cancel();
+
         void delete();
+
         void setSubTitle();
+
         void setCheckedSubTitle();
     }
 
@@ -38,9 +41,9 @@ public class RecordMenuFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_record_menu,container,false);
-        mCallbacks= (Callbacks) getActivity();
-        historyRecordFragment= (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
+        View view = inflater.inflate(R.layout.fragment_record_menu, container, false);
+        mCallbacks = (Callbacks) getActivity();
+        historyRecordFragment = (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
         return view;
     }
 
@@ -48,10 +51,10 @@ public class RecordMenuFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        deleteImageView=view.findViewById(R.id.delete_image_view);
-        cancelImageView=view.findViewById(R.id.cancel_image_view);
-        deleteTextView=view.findViewById(R.id.delete_text_view);
-        cancelTextView=view.findViewById(R.id.cancel_text_view);
+        deleteImageView = view.findViewById(R.id.delete_image_view);
+        cancelImageView = view.findViewById(R.id.cancel_image_view);
+        deleteTextView = view.findViewById(R.id.delete_text_view);
+        cancelTextView = view.findViewById(R.id.cancel_text_view);
         deleteImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +81,5 @@ public class RecordMenuFragment extends Fragment {
                 mCallbacks.cancel();
             }
         });
-
     }
 }

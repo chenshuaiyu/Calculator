@@ -1,16 +1,11 @@
 package com.example.lenovo.calculator.activity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.lenovo.calculator.R;
 import com.example.lenovo.calculator.activity.base.FragmentContainerActivity;
@@ -20,32 +15,34 @@ import com.example.lenovo.calculator.fragment.ClearRecordFragment;
 import com.example.lenovo.calculator.fragment.HistoryRecordFragment;
 import com.example.lenovo.calculator.fragment.RecordMenuFragment;
 
-import org.litepal.crud.DataSupport;
+/**
+ * @author : chenshuaiyu
+ */
 
 public class HistoryRecordActivity extends FragmentContainerActivity implements RecordMenuFragment.Callbacks {
 
-    private boolean checkBoxVisibility=false;
-
-    private HistoryRecordFragment mRecordFragment;
-
     private ActionBar actionBar;
 
+    private HistoryRecordFragment mRecordFragment;
     private Menu mMenu;
 
-    private boolean batchOperateVisibility=false;
+    private boolean checkBoxVisibility = false;
+    private boolean batchOperateVisibility = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        actionBar=getSupportActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        if(mRecordFragment==null)
-            mRecordFragment= (HistoryRecordFragment) getSupportFragmentManager().findFragmentById(getUpFragmentContainerId());
-        if(mRecordFragment.itemCount()!=0)
-            batchOperateVisibility=true;
+        if (mRecordFragment == null) {
+            mRecordFragment = (HistoryRecordFragment) getSupportFragmentManager().findFragmentById(getUpFragmentContainerId());
+        }
+        if (mRecordFragment.itemCount() != 0) {
+            batchOperateVisibility = true;
+        }
         setSubTitle();
     }
 
@@ -66,7 +63,7 @@ public class HistoryRecordActivity extends FragmentContainerActivity implements 
 
     @Override
     protected Fragment createUpFragment() {
-        mRecordFragment=new HistoryRecordFragment();
+        mRecordFragment = new HistoryRecordFragment();
         return mRecordFragment;
     }
 
@@ -77,38 +74,41 @@ public class HistoryRecordActivity extends FragmentContainerActivity implements 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.history_record,menu);
-        mMenu=menu;
-        if(!batchOperateVisibility)
+        getMenuInflater().inflate(R.menu.history_record, menu);
+        mMenu = menu;
+        if (!batchOperateVisibility) {
             mMenu.getItem(0).setVisible(false);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.isChecked:
                 batchOperate();
                 break;
             case android.R.id.home:
-                if(checkBoxVisibility)
+                if (checkBoxVisibility) {
                     cancel();
-                else
+                } else {
                     finish();
+                }
                 break;
-
-            default:break;
+            default:
+                break;
         }
         return true;
     }
 
     public void batchOperate() {
-        if(mRecordFragment==null)
-            mRecordFragment= (HistoryRecordFragment) getSupportFragmentManager().findFragmentById(getUpFragmentContainerId());
+        if (mRecordFragment == null) {
+            mRecordFragment = (HistoryRecordFragment) getSupportFragmentManager().findFragmentById(getUpFragmentContainerId());
+        }
         mRecordFragment.setCheck(true);
-        checkBoxVisibility=true;
+        checkBoxVisibility = true;
 
-        RecyclerViewAdapter.checkedNum=0;
+        RecyclerViewAdapter.checkedNum = 0;
         replaceDownFragment(new RecordMenuFragment());
 
         setCheckedSubTitle();
@@ -118,25 +118,26 @@ public class HistoryRecordActivity extends FragmentContainerActivity implements 
 
     @Override
     public void onBackPressed() {
-        if(checkBoxVisibility) {
+        if (checkBoxVisibility) {
             cancel();
-        }else
+        } else {
             finish();
+        }
     }
 
     private void replaceDownFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.in_menu,0)
-                .replace(getDownFragmentContainerId(),fragment)
+                .setCustomAnimations(R.anim.in_menu, 0)
+                .replace(getDownFragmentContainerId(), fragment)
                 .commit();
     }
 
     @Override
     public void cancel() {
-        checkBoxVisibility=false;
+        checkBoxVisibility = false;
         mRecordFragment.setCheck(false);
         replaceDownFragment(new ClearRecordFragment());
-        Record record=new Record();
+        Record record = new Record();
         record.setIsChecked("false");
         record.updateAll();
         setSubTitle();
@@ -148,27 +149,26 @@ public class HistoryRecordActivity extends FragmentContainerActivity implements 
     public void delete() {
         mRecordFragment.deleteChecked();
         cancel();
-        if(mRecordFragment.itemCount()==0){
-            batchOperateVisibility=false;
+        if (mRecordFragment.itemCount() == 0) {
+            batchOperateVisibility = false;
             mMenu.getItem(0).setVisible(false);
         }
-
     }
 
     @Override
     public void setSubTitle() {
-        actionBar.setSubtitle("共有 "+mRecordFragment.itemCount()+" 条记录");
+        actionBar.setSubtitle("共有 " + mRecordFragment.itemCount() + " 条记录");
     }
 
     @Override
     public void setCheckedSubTitle() {
-        actionBar.setSubtitle("已选中 "+ RecyclerViewAdapter.checkedNum+" 个");
+        actionBar.setSubtitle("已选中 " + RecyclerViewAdapter.checkedNum + " 个");
     }
 
-    public void setZero(){
-        RecyclerViewAdapter.checkedNum=0;
-        actionBar.setSubtitle("共有 "+0+" 条记录");
-        batchOperateVisibility=false;
+    public void setZero() {
+        RecyclerViewAdapter.checkedNum = 0;
+        actionBar.setSubtitle("共有 " + 0 + " 条记录");
+        batchOperateVisibility = false;
         mMenu.getItem(0).setVisible(false);
     }
 }

@@ -31,10 +31,11 @@ public class HistoryRecordFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_history_record,container,false);
-        mRecyclerView=view.findViewById(R.id.record_recycler_view);
-        if(mAdapter==null)
-            mAdapter=new RecyclerViewAdapter((HistoryRecordActivity) getActivity(),init());
+        View view = inflater.inflate(R.layout.fragment_history_record, container, false);
+        mRecyclerView = view.findViewById(R.id.record_recycler_view);
+        if (mAdapter == null) {
+            mAdapter = new RecyclerViewAdapter((HistoryRecordActivity) getActivity(), init());
+        }
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
@@ -44,11 +45,11 @@ public class HistoryRecordFragment extends Fragment {
         mAdapter.refreshHistoryRecord();
     }
 
-    public void setCheck(boolean b){
+    public void setCheck(boolean b) {
         mAdapter.setCheckBoxVisibility(b);
     }
 
-    public void deleteChecked(){
+    public void deleteChecked() {
         mAdapter.deleteChecked();
     }
 
@@ -56,9 +57,10 @@ public class HistoryRecordFragment extends Fragment {
         return DataSupport.findAll(Record.class);
     }
 
-    public int itemCount(){
-        if(mAdapter==null)
-            mAdapter=new RecyclerViewAdapter((HistoryRecordActivity) getActivity(),init());
+    public int itemCount() {
+        if (mAdapter == null) {
+            mAdapter = new RecyclerViewAdapter((HistoryRecordActivity) getActivity(), init());
+        }
         return mAdapter.getItemCount();
     }
 

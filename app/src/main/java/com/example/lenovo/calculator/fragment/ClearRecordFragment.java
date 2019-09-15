@@ -31,19 +31,19 @@ public class ClearRecordFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_clear_record,container,false);
+        View view = inflater.inflate(R.layout.fragment_clear_record, container, false);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        clearRecordButton=view.findViewById(R.id.clear_record);
+        clearRecordButton = view.findViewById(R.id.clear_record);
         clearRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final HistoryRecordActivity context = (HistoryRecordActivity) v.getContext();
-                AlertDialog alertDialog=new AlertDialog.Builder(getActivity())
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                         .setTitle("确认删除所有记录?")
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
@@ -55,8 +55,9 @@ public class ClearRecordFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 DataSupport.deleteAll(Record.class);
-                                if (mRecordFragment==null)
-                                    mRecordFragment= (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
+                                if (mRecordFragment == null) {
+                                    mRecordFragment = (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
+                                }
                                 mRecordFragment.refreshAdapter();
                                 context.setZero();
                                 clearRecordButton.setEnabled(false);
@@ -65,11 +66,13 @@ public class ClearRecordFragment extends Fragment {
                         .show();
             }
         });
-        if (mRecordFragment==null)
-            mRecordFragment= (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
-        if(mRecordFragment.itemCount()==0)
+        if (mRecordFragment == null) {
+            mRecordFragment = (HistoryRecordFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.history_record);
+        }
+        if (mRecordFragment.itemCount() == 0) {
             clearRecordButton.setEnabled(false);
-        else
+        } else {
             clearRecordButton.setEnabled(true);
+        }
     }
 }

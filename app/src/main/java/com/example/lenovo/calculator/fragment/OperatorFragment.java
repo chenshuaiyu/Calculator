@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import com.example.lenovo.calculator.R;
 
 /**
- * Coder : chenshuaiyu
- * Time : 2018/2/22 15:11
+ * @author : chenshuaiyu
+ * @date : 2018/2/22 15:11
  */
 
 public class OperatorFragment extends Fragment {
@@ -19,7 +19,7 @@ public class OperatorFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_operator,container,false);
+        View view = inflater.inflate(R.layout.fragment_operator, container, false);
         return view;
     }
 }
